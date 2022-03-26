@@ -1,26 +1,29 @@
-function newImage (imgSrc, fixedLeft, fixedBottom, itemFalsey) {
+function newImage (imgSrc, fixedLeft, fixedBottom, itemFalsey, imgwidth) {
     let item = document.createElement('img')
     item.src = imgSrc
     item.style.position = 'fixed'
-    item.style.left = fixedLeft
+    item.style.left = String(fixedLeft) + "px"
     item.style.bottom = fixedBottom
     document.body.append(item)
-    if(itemFalsey){
-        item.addEventListener("dblclick", function () {
-            item.remove()
-        })
-    }
+    return item
+}
+function newItem (imgSrc, fixedLeft, fixedBottom)
+{
+    let object = newImage(imgSrc,fixedLeft,fixedBottom)
+    object.addEventListener("dblclick", () => {
+        object.remove()
+    })
 }
 //function calls//-----------------------------------------
-newImage('assets/green-character.gif', '100px','100px',false)
-newImage('assets/pine-tree.png', '450px','200px',false)
-newImage("assets/tree.png", "200px", "300px",false)
-newImage("assets/pillar.png", "350px", "100px",false)
-newImage("assets/crate.png", "150px", "200px",false)
-newImage("assets/well.png","500px", "425px",false)
+newImage('assets/green-character.gif', 100,'100px')
+newImage('assets/pine-tree.png', 450,'200px')
+newImage("assets/tree.png", 200, "300px")
+newImage("assets/pillar.png", 350, "100px")
+newImage("assets/crate.png", 150, "200px")
+newImage("assets/well.png",500, "425px")
 //Clickable Images //----------------------------
-newImage("assets/sword.png", "500px", "405px",true)
-newImage("assets/shield.png", "165px", "185px",true)
-newImage("assets/staff.png", "600px", "100px", true)
+newItem("assets/sword.png", 500, "405px")
+newItem("assets/shield.png", 165, "185px")
+newItem("assets/staff.png", 600, "100px")
 
 
